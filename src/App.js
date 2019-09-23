@@ -10,7 +10,14 @@ import HallOfFame, { FAKE_HOF } from "./HallOfFame";
 const SIDE = 6;
 const SYMBOLS = "😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿";
 
+const autoBind = require("auto-bind");
+
 class App extends Component {
+    constructor() {
+        super();
+        autoBind(this);
+    }
+
     cards = this.generateCards();
 
     generateCards() {
@@ -25,7 +32,7 @@ class App extends Component {
     }
 
     handleCardClick(card) {
-        console.log(card, "clicked");
+        console.log(card, this);
     }
 
     render() {

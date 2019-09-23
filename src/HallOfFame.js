@@ -2,6 +2,8 @@ import React from "react";
 
 import "./HallOfFame.css";
 
+import PropTypes from "prop-types";
+
 const HallOfFame = ({ entries }) => (
     <table className="hallOfFame">
         <tbody>
@@ -26,3 +28,14 @@ export const FAKE_HOF = [
     { id: 1, guesses: 31, date: "06/10/2017", player: "Louisa" },
     { id: 0, guesses: 48, date: "14/10/2017", player: "Marc" }
 ];
+
+HallOfFame.propTypes = {
+    entries: PropTypes.arrayOf(
+        PropTypes.shape({
+            date: PropTypes.string.isRequired,
+            guesses: PropTypes.number.isRequired,
+            id: PropTypes.number.isRequired,
+            player: PropTypes.string.isRequired
+        })
+    ).isRequired
+};
